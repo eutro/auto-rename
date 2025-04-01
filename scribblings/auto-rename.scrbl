@@ -1,11 +1,22 @@
 #lang scribble/manual
 
+@(require auto-rename/language/british-english
+          auto-rename/language/polyglot)
 @(require (for-label auto-rename
+                     auto-rename/language/british-english
+                     auto-rename/language/polyglot
                      racket/base
                      racket/sequence
                      racket/contract
                      racket/provide-transform
-                     racket/require-transform)
+                     racket/require-transform
+                     (except-in
+                      (combine-in
+                       (for-british racket)
+                       (en-français racket racket/generator)
+                       (auf-deutsch racket)
+                       (magyarul racket racket/generator))
+                      import export rest tag))
           scribble/example)
 
 @(define make-evaluator
@@ -228,17 +239,41 @@ Sometimes.
   #:once
 
   (require auto-rename/language/polyglot)
-  (require (en-français racket/base))
-  (pour ([x (dans-gamme 5)])
-    (affichage x))
+  (require (en-français racket racket/generator))
+  (se-dresser inconvénients nul (liste 1 2 3))
+  (|jeter-un-coup-d'œil-octets| 4 0 (ouvrir-saisir-chaîne "abcd"))
 
-  (exiger (auf-deutsch racket/base))
-  (für ([x (in-reichweite 5)])
-    (schreiben x))
+  (exiger (auf-deutsch racket))
+  (sogar? (länge (nachteile 0 (nachteile 1 null))))
+  (lassen-werte ([(rohr-ein rohr-aus) (machen-rohr)])
+    (schreiben-saite (saite-oben "efgh\nijkl") rohr-aus)
+    (schließen-ausgabe-hafen rohr-aus)
+    (beginnen0
+      (hafen->linien rohr-ein)
+      (schließen-eingang-hafen rohr-ein)))
 
-  (erfordern (magyarul racket/base))
-  (-ra ([x (-ben-hatótávolság 5)])
-    (írás x)))
+  (erfordern (magyarul racket racket/generator))
+  (meghatároz funkció
+    (ügy-lambda
+     [() (hozam 1) (hozam 2) (hozam 3)]
+     [(x y) (hányados/maradék x y)]))
+  (funkció 100 7)
+
+  (definieren l\'ensemble (veränderlich-satz))
+  (für ([w (dans-générateur
+             (dynamique-vent
+              (λ () (kijelző "Be "))
+              funkció
+              (λ () (anzeige "Aus "))))]
+        [x (in-reichweite 5)]
+        [y (-ben-természetes 3)]
+        [z (dans-faire-du-vélo (dans-valeur 2))])
+    (satz-hinzufügen!
+     l\'ensemble
+     (dans-le-monde-ior
+      (arithmetik-schicht w x)
+      (rationalisieren (/ y) (/ z)))))
+  l\'ensemble)
 
 @deftogether[[(defform (en-français spec ...+))
               (defform (auf-deutsch spec ...+))
